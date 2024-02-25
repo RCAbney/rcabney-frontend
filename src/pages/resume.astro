@@ -1,0 +1,45 @@
+---
+import { getResume } from "../client/api";
+import { PortableText } from "astro-portabletext";
+import Layout from "../layouts/Layout.astro";
+
+const resume = await getResume();
+const { title, summary, technicalSkills, experience, education } = resume;
+---
+
+<Layout title="Resume">
+    <h1>{title}</h1>
+    <PortableText value={summary} />
+    {
+        technicalSkills.map(({ title, description }) => {
+            return (
+                <div>
+                    <h2>{title}</h2>
+                    <PortableText value={description} />
+                </div>
+            );
+        })
+    }
+    {
+        experience.map(({ title, datesWorked, jobDescription }) => {
+            return (
+                <div>
+                    <h2>{title}</h2>
+                    <p>{datesWorked}</p>
+                    <PortableText value={jobDescription} />
+                </div>
+            );
+        })
+    }
+    {
+        education.map(({ title, datesAttended, description }) => {
+            return (
+                <div>
+                    <h2>{title}</h2>
+                    <p>{datesAttended}</p>
+                    <PortableText value={description} />
+                </div>
+            );
+        })
+    }
+</Layout>

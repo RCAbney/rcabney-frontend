@@ -1,0 +1,17 @@
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@sanity/client": "^6.14.3",
+    "astro": "^4.4.4",
+    "astro-portabletext": "^0.9.6"
+  }
+}

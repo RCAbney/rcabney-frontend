@@ -1,0 +1,10 @@
+---
+import { getPortfolioItems } from "../client/api";
+import Layout from "../layouts/Layout.astro";
+const portfolioItems = await getPortfolioItems();
+---
+
+<Layout>
+    <h1>Astro</h1>
+    <div>{portfolioItems.map((item) => <p>{item.title}</p>)}</div>
+</Layout>
