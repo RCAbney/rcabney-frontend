@@ -3,7 +3,8 @@ import { client } from "./client";
 export async function getPortfolioItems() {
     const portfolioItems = await client.fetch(
         `*[_type == "portfolioItem"]{
-            title,
+            ...,
+            categories[]->
         }`
     );
     return portfolioItems;

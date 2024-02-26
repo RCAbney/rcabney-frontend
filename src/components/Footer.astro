@@ -1,21 +1,23 @@
 ---
-
+import { Image } from 'astro:assets'
+import linkedIn from '../images/linkedin.svg'
+import github from '../images/github.svg'
 ---
-<footer>
-    <div class="footer-content">
-      <a href="/" class="footer-link">
+<footer class="text-white bg-black">
+    <div class="max-w-7xl my-0 mx-auto py-8 px-4 flex justify-between">
+      <a href="/" class="text-white no-underline">
         © {new Date().getFullYear()}
         {` `}RCAbney
       </a>
-      <ul class="social-links">
-        <li>
+      <ul class="m-0 p-0 list-none">
+        <li class="inline-block w-5 ml-2 opacity-80">
           <a href="https://github.com/rcabney">
-            <img src="https://placehold.it/50x50" alt="github logo" />
+            <Image src={github} alt="github logo" />
           </a>
         </li>
-        <li>
+        <li class="inline-block w-5 ml-2 opacity-80">
           <a href="https://www.linkedin.com/in/ryanabney/">
-            <img src="https://placehold.it/50x50" alt="linkedin logo" />
+            <Image src={linkedIn} alt="linkedin logo" />
           </a>
         </li>
       </ul>
