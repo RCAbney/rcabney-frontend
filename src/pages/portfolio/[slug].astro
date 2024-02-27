@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getPortfolioItems } from "../../client/api";
+import { PortableText } from "astro-portabletext";
+import { urlFor } from "../../client/imageUrl";
+export async function getStaticPaths() {
+    const portfolioItems = await getPortfolioItems();
+    return portfolioItems.map((item) => {
+        return {
+            params: { slug: item.slug?.current || "" },
+            props: { ...item },
+        };
+    });
+}
+
+const { slug } = Astro.params;
+const { title, body, mainImage } = Astro.props;
+---
+
+<Layout>
+    <p>{title}</p>
+    <img
+        src={urlFor(mainImage).url()}
+        alt={title}
+        class="w-full h-auto self-start object-cover"
+    />
+    <div class="prose">
+        <PortableText value={body} />
+    </div>
+    <a href="/">Back to the front page.</a>
+</Layout>
