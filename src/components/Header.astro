@@ -3,12 +3,12 @@ import { Image } from 'astro:assets';
 import rcabneyLogo from '../images/rcabney-logo-hz.png';
 ---
 <header class="bg-black border-b-zinc-500 border-b-4">
-    <nav class="flex justify-between items-center p-4 max-w-7xl my-0 mx-auto">
-      <a class="leading-[0] no-underline m-0" href="/">
+    <nav class="flex justify-between items-center p-4 max-w-7xl my-0 mx-auto flex-wrap">
+      <a class="leading-[0] no-underline mx-auto xs:m-0 w-52 min-w-52 mb-4" href="/">
         <Image src={rcabneyLogo} alt="RCAbney Logo" width={200} height={37} />
       </a>
 
-      <ul class="list-none flex justify-center p-0">
+      <ul class="list-none mx-auto flex justify-center p-0 xs:mx-0">
         <li>
           <a class="text-white p-2 no-underline"href="/about/">About</a>
         </li>

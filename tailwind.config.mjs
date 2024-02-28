@@ -10,6 +10,9 @@ export default {
 			colors: {
 				rcabney: '#6c8b6b',
 				primaryText: 'rgba(0,0,0,0.8)'
+			},
+			screens: {
+				'xs': '475px'
 			}
 		},
 	},
