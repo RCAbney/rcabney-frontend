@@ -3,14 +3,18 @@ import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 const { title } = Astro.props;
-import favicon from "../../public/favicon.ico"
+import favicon from "../images/favicon.ico"
+console.log(import.meta.env.GOOGLE_ANALYTICS)
 ---
 
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Ryan Abney is a front end software engineer and designer and could be a great fit on your team!" />
+        <meta
+            name="description"
+            content="Ryan Abney is a front end software engineer and designer and could be a great fit on your team!"
+        />
         <link rel="icon" sizes="any" href={favicon} />
         <title>
             Ryan Abney | Software Engineer {title ? `- ${title}` : ""}
@@ -21,6 +25,22 @@ import favicon from "../../public/favicon.ico"
             href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
         />
+
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src=`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GOOGLE_ANALYTICS}`
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", `${import.meta.env.PUBLIC_GOOGLE_ANALYTICS}`);
+        </script>
+
         <ViewTransitions />
     </head>
     <body class="bg-gray-100 text-primaryText">
