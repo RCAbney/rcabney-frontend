@@ -8,39 +8,42 @@ import { urlFor } from "../client/imageUrl";
     class="p-4 grid max-w-7xl mx-auto mt-0 mb-8 gap-6 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]"
 >
     {
-        portfolioItems && portfolioItems.map((item) => {
-            const { title, slug, categories, mainImage, imgMetadata } = item;
-            const { width } = imgMetadata.metadata.dimensions;
-            return (
-                <div class="card min-w-64 bg-white shadow-xl flex flex-col">
-                    <a href={`/portfolio/${slug.current}`}>
-                        <Image
-                            src={urlFor(mainImage).url()}
-                            alt={title}
-                            class="w-full h-auto self-start object-cover"
-                            inferSize
-                            widths={[240, 540, 720, width]}
-                        />
-                    </a>
-                    <div class="folio-details p-8 pb-0 bg-white mb-0 flex-1">
-                        <h2 class="folio-headline text-xl m-0 mb-4 font-serif font-bold text-rcabney">
-                            <a
-                                href={`/portfolio/${slug.current}`}
-                                class="folio-link text-inherit no-underline"
-                            >
-                                {title}
-                            </a>
-                        </h2>
+        portfolioItems &&
+            portfolioItems.map((item) => {
+                const { title, slug, categories, mainImage, imgMetadata } =
+                    item;
+                const { width } = imgMetadata.metadata.dimensions;
+                return (
+                    <div class="card min-w-64 bg-white shadow-xl flex flex-col">
+                        <a href={`/portfolio/${slug.current}`}>
+                            <Image
+                                src={urlFor(mainImage).url()}
+                                alt={title}
+                                class="w-full h-auto self-start object-cover"
+                                inferSize
+                                widths={[240, 540, 720, width]}
+                            />
+                        </a>
+                        <div class="folio-details p-8 pb-0 bg-white mb-0 flex-1">
+                            <h2 class="folio-headline text-xl m-0 mb-4 font-serif font-bold text-rcabney">
+                                <a
+                                    href={`/portfolio/${slug.current}`}
+                                    class="folio-link text-inherit no-underline"
+                                >
+                                    {title}
+                                </a>
+                            </h2>
+                        </div>
+                        <ul class="folio-tags p-0 pl-8 mb-4 text-xs flex flex-row flex-wrap">
+                            {categories &&
+                                categories.map((cat) => (
+                                    <li class="lowercase after:px-2 after:content-['|'] last:after:px-0 last:after:content-['']">
+                                        {cat.title}
+                                    </li>
+                                ))}
+                        </ul>
                     </div>
-                    <ul class="folio-tags p-0 pl-8 mb-4 text-xs flex flex-row flex-wrap">
-                        {categories && categories.map((cat) => (
-                            <li class="lowercase after:px-2 after:content-['|'] last:after:px-0 last:after:content-['']">
-                                {cat.title}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            );
-        })
+                );
+            })
     }
 </div>
