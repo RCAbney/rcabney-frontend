@@ -8,21 +8,21 @@ const { title, summary, technicalSkills, experience, education } = resume;
 ---
 
 <Layout title="Resume">
-    <div class="max-w-[60ch] mx-auto mt-8">
-        <h1 class="mb-8 text-3xl font-serif font-bold">
+    <div class="max-w-[70ch] mx-auto mt-8 p-4">
+        <h1 class="mb-8 text-4xl text-rcabney font-serif font-bold">
             {title}
         </h1>
 
         <div class="mb-8">
             <PortableText value={summary} />
         </div>
-        <h2 class="text-3xl mb-6 font-serif font-bold">Technical Skills</h2>
+        <h2 class="text-3xl mb-6 font-serif font-bold text-rcabney">Technical Skills</h2>
         <div class="flex flex-wrap mb-8">
             {
                 technicalSkills.map(({ title, description }) => {
                     return (
                         <div class="basis-1/2">
-                            <h2 class="text-xl mb-3 font-serif font-bold">{title}</h2>
+                            <h2 class="text-xl mb-3 font-serif font-bold text-rcabney">{title}</h2>
                             <div class="prose mb-6">
                                 <PortableText value={description} />
                             </div>
@@ -31,15 +31,15 @@ const { title, summary, technicalSkills, experience, education } = resume;
                 })
             }
         </div>
-        <h2 class="text-3xl mb-6 font-serif font-bold">Experience</h2>
+        <h2 class="text-3xl mb-6 font-serif font-bold text-rcabney">Experience</h2>
         <div class="mb-8">
             {
                 experience.map(({ title, datesWorked, jobDescription }) => {
                     return (
                         <div class="mb-6">
-                            <h2 class="text-2xl mb-3 font-serif font-bold">{title}</h2>
+                            <h2 class="text-2xl mb-3 font-serif font-bold text-rcabney">{title}</h2>
                             <p>{datesWorked}</p>
-                            <div class="max-w-[60ch]" />
+                            <div class="max-w-[70ch]" />
                             <div class="prose">
                                 <PortableText value={jobDescription} />
                             </div>
@@ -48,13 +48,13 @@ const { title, summary, technicalSkills, experience, education } = resume;
                 })
             }
         </div>
-        <h2 class="text-3xl mb-6 font-serif font-bold">Education</h2>
+        <h2 class="text-3xl mb-6 font-serif font-bold text-rcabney">Education</h2>
         <div class="mb-8">
             {
                 education.map(({ title, datesAttended, description }) => {
                     return (
                         <div class="mb-6">
-                            <h2 class="text-2xl mb-4 font-serif font-bold">{title}</h2>
+                            <h2 class="text-2xl mb-4 font-serif font-bold text-rcabney">{title}</h2>
                             <p>{datesAttended}</p>
                             <div class="prose">
                                 <PortableText value={description} />

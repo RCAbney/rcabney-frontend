@@ -4,7 +4,9 @@ export async function getPortfolioItems() {
     const portfolioItems = await client.fetch(
         `*[_type == "portfolioItem"]{
             ...,
-            categories[]->
+            categories[]->,
+            "imgMetadata": mainImage.asset->{metadata}
+            
         }`
     );
     return portfolioItems;

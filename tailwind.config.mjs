@@ -6,6 +6,10 @@ export default {
 			fontFamily: {
 				"serif": ['Merriweather','serif'],
 				"sans": ["Raleway", 'sans-serif']
+			},
+			colors: {
+				rcabney: '#6c8b6b',
+				primaryText: 'rgba(0,0,0,0.8)'
 			}
 		},
 	},

@@ -1,8 +1,9 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { getPortfolioItems } from "../../client/api";
+import { Image } from "astro:assets";
 import { PortableText } from "astro-portabletext";
 import { urlFor } from "../../client/imageUrl";
+import Layout from "../../layouts/Layout.astro";
+import { getPortfolioItems } from "../../client/api";
 export async function getStaticPaths() {
     const portfolioItems = await getPortfolioItems();
     return portfolioItems.map((item) => {
@@ -13,19 +14,23 @@ export async function getStaticPaths() {
     });
 }
 
-const { slug } = Astro.params;
-const { title, body, mainImage } = Astro.props;
+const { title, body, mainImage, imgMetadata } = Astro.props;
+const { width } = imgMetadata.metadata.dimensions
 ---
 
 <Layout>
-    <p>{title}</p>
-    <img
-        src={urlFor(mainImage).url()}
-        alt={title}
-        class="w-full h-auto self-start object-cover"
-    />
-    <div class="prose">
-        <PortableText value={body} />
-    </div>
-    <a href="/">Back to the front page.</a>
+    <article class="p-4 mt-8 mx-auto max-w-7xl">
+        <h1 class="font-serif text-4xl font-bold mb-8 text-rcabney">{title}</h1>
+        <Image
+            src={urlFor(mainImage).url()}
+            alt={title}
+            class="w-full h-auto self-start object-cover mb-4"
+            inferSize
+            widths={[240, 540, 720, width]}
+        />
+        <div class="prose mb-4">
+            <PortableText value={body} />
+        </div>
+        <a href="/" class="text-blue-700 underline">Back to the front page.</a>
+    </article>
 </Layout>
