@@ -26,6 +26,25 @@ console.log(import.meta.env.GOOGLE_ANALYTICS)
             rel="stylesheet"
         />
 
+        <!-- Theme initialization script -->
+        <script is:inline>
+            const theme = (() => {
+                if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                    return localStorage.getItem('theme');
+                }
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            })();
+        
+            if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
+        </script>
+
         <!-- Google tag (gtag.js) -->
         <script
             async
@@ -43,7 +62,7 @@ console.log(import.meta.env.GOOGLE_ANALYTICS)
 
         <ViewTransitions />
     </head>
-    <body class="bg-gray-100 text-primaryText">
+    <body class="bg-gray-100 dark:bg-gray-900 text-primaryText dark:text-zinc-200">
         <div class="flex flex-col min-h-screen">
             <Header />
             <main class="flex-grow block">
