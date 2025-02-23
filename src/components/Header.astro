@@ -1,27 +1,28 @@
 ---
 import { Image } from 'astro:assets';
 import rcabneyLogo from '../images/rcabney-logo-hz.png';
-import ThemeToggle from './ThemeToggle.astro';
+import ThemeToggle from './ThemeToggle';
 ---
+
 <header class="bg-black dark:bg-zinc-900 border-b-zinc-500 border-b-4">
     <nav class="flex justify-between items-center p-4 max-w-7xl my-0 mx-auto flex-wrap">
-      <a class="leading-[0] no-underline mx-auto xs:m-0 w-52 min-w-52 mb-4" href="/">
+      <a class="leading-[0] no-underline mx-auto xs:m-0 w-52 min-w-52 mb-4 cursor-pointer" href="/">
         <Image src={rcabneyLogo} alt="RCAbney Logo" width={200} height={37} />
       </a>
 
       <ul class="list-none mx-auto flex justify-center items-center p-0 xs:mx-0">
         <li>
-          <a class="text-white p-2 no-underline" href="/about/">About</a>
+          <a class="text-white p-2 no-underline cursor-pointer" href="/about/">About</a>
         </li>
         <li>
-          <a class="text-white p-2 no-underline" href="/portfolio/">Portfolio</a>
+          <a class="text-white p-2 no-underline cursor-pointer" href="/portfolio/">Portfolio</a>
         </li>
         <li>
-          <a class="text-white p-2 no-underline" href="/resume">Resume</a>
+          <a class="text-white p-2 no-underline cursor-pointer" href="/resume">Resume</a>
         </li>
         <li>
-          <ThemeToggle />
+          <ThemeToggle client:load />
         </li>
       </ul>
     </nav>
-  </header>
+</header>

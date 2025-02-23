@@ -26,23 +26,32 @@ console.log(import.meta.env.GOOGLE_ANALYTICS)
             rel="stylesheet"
         />
 
-        <!-- Theme initialization script -->
+        <!-- Update theme initialization script -->
         <script is:inline>
-            const theme = (() => {
-                if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-                    return localStorage.getItem('theme');
+            // This script runs on every page load and transition
+            function updateTheme() {
+                const theme = (() => {
+                    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                        return localStorage.getItem('theme');
+                    }
+                    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        return 'dark';
+                    }
+                    return 'light';
+                })();
+
+                if (theme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                } else {
+                    document.documentElement.classList.add('dark');
                 }
-                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    return 'dark';
-                }
-                return 'light';
-            })();
-        
-            if (theme === 'light') {
-                document.documentElement.classList.remove('dark');
-            } else {
-                document.documentElement.classList.add('dark');
             }
+
+            // Run on initial page load
+            updateTheme();
+
+            // Run on view transitions
+            document.addEventListener('astro:after-swap', updateTheme);
         </script>
 
         <!-- Google tag (gtag.js) -->
