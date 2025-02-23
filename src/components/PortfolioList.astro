@@ -14,12 +14,12 @@ import { urlFor } from "../client/imageUrl";
                     item;
                 const { width } = imgMetadata.metadata.dimensions;
                 return (
-                    <div class="card min-w-64 bg-white shadow-xl flex flex-col">
+                    <div class="card min-w-64 bg-white shadow-xl flex flex-col rounded-md">
                         <a href={`/portfolio/${slug.current}`}>
                             <Image
                                 src={urlFor(mainImage).url()}
                                 alt={title}
-                                class="w-full h-auto self-start object-cover"
+                                class="w-full h-auto self-start object-cover rounded-t-md"
                                 inferSize
                                 widths={[240, 540, 720, width]}
                             />
@@ -37,7 +37,7 @@ import { urlFor } from "../client/imageUrl";
                         <ul class="folio-tags p-0 pl-8 mb-4 text-xs flex flex-row flex-wrap">
                             {categories &&
                                 categories.map((cat) => (
-                                    <li class="lowercase after:px-2 after:content-['|'] last:after:px-0 last:after:content-['']">
+                                    <li class="lowercase text-gray-600 after:px-2 after:content-['|'] last:after:px-0 last:after:content-['']">
                                         {cat.title}
                                     </li>
                                 ))}
