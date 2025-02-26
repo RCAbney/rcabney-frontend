@@ -4,6 +4,20 @@ import { PortableText } from "astro-portabletext";
 import { urlFor } from "../../client/imageUrl";
 import Layout from "../../layouts/Layout.astro";
 import { getPortfolioItems } from "../../client/api";
+
+interface PortfolioItem {
+    title: string;
+    body: any;
+    mainImage: any;
+    imgMetadata: {
+        metadata: {
+            dimensions: {
+                width: number;
+            }
+        }
+    };
+}
+
 export async function getStaticPaths() {
     const portfolioItems = await getPortfolioItems();
     return portfolioItems.map((item) => {
@@ -14,7 +28,7 @@ export async function getStaticPaths() {
     });
 }
 
-const { title, body, mainImage, imgMetadata } = Astro.props;
+const { title, body, mainImage, imgMetadata } = Astro.props as PortfolioItem;
 const { width } = imgMetadata.metadata.dimensions
 ---
 
